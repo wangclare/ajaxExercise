@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset='utf-8'>
+		<title>ajax练习</title>
+		<script src='my_ajax.js'></script>
+	    <script>
+          window.onload=function(){
+          	var oBtn=document.getElementById('btn');
+          	oBtn.onclick=function(){
+          		ajax('jsonT.txt?t='+new Date().getTime(),function(str)
+          		{
+                var arr=eval(str);
+                for(var i=0;i<arr.length;i++){
+                	//alert(arr[i].user);
+                	//alert(arr[i].pass);
+                	var oUl=document.getElementById('ul1');
+                	var oLi=document.createElement('li');
+                	oLi.innerHTML=arr[i].user+arr[i].pass;
+                	//注意oLi[i]这样是不对的
+                	oUl.appendChild(oLi);
+                }
+          		})
+          	}
+          }
+	    </script>
+</head>
+<body>
+	<input type='button' id='btn' value='调用' />
+	<ul id='ul1'>
+	</ul>
+</body>
+</html>
